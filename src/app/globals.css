@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #050505;
+  --foreground: rgba(255, 255, 255, 0.92);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #050505;
+  color-scheme: dark;
+}
+
+body {
+  color: var(--foreground);
+  background-color: #050505;
+  background-image: radial-gradient(circle at center, #111827 0%, #050505 80%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Luxury Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1b4b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #312e81;
+}
+
+/* Glassmorphism Styles */
+.bg-glass {
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.border-glass {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.border-glass-glow {
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* Glow Utilities */
+.text-glow {
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.bg-accent-gradient {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 30%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Card Flip Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Antigravity Character Float Loop */
+@keyframes floatGentle {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 3s ease-in-out infinite;
+}
