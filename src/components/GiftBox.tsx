@@ -18,7 +18,7 @@ interface Letter {
 
 export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxProps) {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [inputValue, setInputValue] = useState("");
   const [quizError, setQuizError] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
@@ -27,13 +27,6 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationFrameId = useRef<number | null>(null);
-
-  const options = [
-    { id: "A", text: "The Coffee Shop Laughs", isCorrect: true },
-    { id: "B", text: "Chasing the Sunset", isCorrect: false },
-    { id: "C", text: "Campfire Starry Nights", isCorrect: false },
-    { id: "D", text: "Winter Walks & Warmth", isCorrect: false },
-  ];
 
   const letters: Letter[] = [
     {
@@ -74,8 +67,7 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
   };
 
   const handleQuizSubmit = () => {
-    const selected = options.find((o) => o.id === selectedOption);
-    if (selected?.isCorrect) {
+    if (inputValue.trim() === "14") {
       setIsQuizOpen(false);
       setIsOpened(true);
       onOpenSuccess();
@@ -385,24 +377,19 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
                   <Sparkles className="w-5 h-5 text-pink-glow animate-pulse" />
                 </div>
                 <h3 className="font-serif text-xl text-white mt-2">One Last Question...</h3>
-                <p className="text-xs text-text-secondary">Which memory started it all?</p>
+                <p className="text-xs text-text-secondary font-sans tracking-wide">(Chudi ka size × 20) - (Ring ka size × 3) + (Sandal ka size × 2)</p>
               </div>
 
               <div className="flex flex-col gap-3 mt-2">
-                {options.map((option) => (
-                  <button
-                    key={option.id}
-                    onClick={() => setSelectedOption(option.id)}
-                    className={`p-4 rounded-xl border text-left font-sans text-xs uppercase tracking-wider transition-all duration-300 ${
-                      selectedOption === option.id
-                        ? "bg-accent-gradient border-glass text-white shadow-[0_4px_15px_rgba(139,92,246,0.2)]"
-                        : "bg-white/5 border-white/5 text-text-secondary hover:text-white hover:bg-white/10 hover:border-white/10"
-                    }`}
-                  >
-                    <span className="font-bold mr-2 text-pink-glow">{option.id}.</span>
-                    {option.text}
-                  </button>
-                ))}
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Enter your answer"
+                  className="w-full p-4 rounded-xl border bg-white/5 border-white/5 text-white placeholder:text-text-secondary/50 font-sans text-xs tracking-wider transition-all duration-300 focus:outline-none focus:border-white/20 focus:bg-white/10"
+                />
               </div>
 
               {quizError && (
@@ -417,7 +404,7 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
 
               <button
                 onClick={handleQuizSubmit}
-                disabled={!selectedOption}
+                disabled={!inputValue.trim()}
                 className="mt-2 w-full py-3 rounded-full bg-white/95 text-neutral-950 font-sans font-bold text-xs uppercase tracking-widest hover:bg-white active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300"
               >
                 Submit Answer
@@ -483,7 +470,7 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
           opacity: { duration: 0.5 },
           y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
         }}
-        className="absolute bottom-8 left-0 right-0 mx-auto w-max z-30 flex flex-col items-center gap-1.5 pointer-events-none select-none"
+        className="absolute bottom-14 left-0 right-0 mx-auto w-max z-30 flex flex-col items-center gap-1.5 pointer-events-none select-none"
       >
         <span className="font-sans text-[9px] tracking-[0.25em] text-white uppercase font-bold">
           Scroll Down

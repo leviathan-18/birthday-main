@@ -7,6 +7,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CinematicText from "./CinematicText";
 
+import Image from "next/image";
+
 
 interface WishParticle {
   id: number;
@@ -23,43 +25,16 @@ interface WishJarProps {
   onCollectKey?: (e: React.MouseEvent) => void;
 }
 
-const wishes = [
-  "May every day give you a reason to smile.",
-  "May happiness always find its way to you.",
-  "May your dreams become memories.",
-  "May your heart always stay light.",
-  "May this year surprise you in beautiful ways.",
-  "May you find peace in the quiet moments.",
-  "May your path be lined with stardust and grace.",
-  "May you always remember how much you matter.",
-  "May the warmth you give to the world find its way back to you.",
-  "May you laugh until your stomach hurts, often.",
-  "May your days be gentle and your nights be peaceful.",
-  "May you find beauty in the simplest of details.",
-  "May courage guide you when the path grows dim.",
-  "May your soul remain as beautiful and wild as it is today.",
-  "May you feel loved, today and every single day after.",
-  "May you always look at the sky and see infinite possibilities.",
-  "May your steps lead you to places that make you feel truly alive.",
-  "May you always have a hand to hold when you need comfort.",
-  "May the storms in your life only clear the way for brighter skies.",
-  "May you find joy in the chapters you are still writing.",
-  "May your heart never lose its beautiful wonder.",
-  "May you be surrounded by voices that lift you up.",
-  "May your quiet victories be celebrated in the stars.",
-  "May this new age bring you closer to your true self.",
-  "May the laughter we share be just the beginning.",
-  "May you look back on this year with a smile of fulfillment.",
-  "May the world be soft to you, always.",
-  "May your mind be a sanctuary of peace.",
-  "May you find warmth in the cold, and light in the dark.",
-  "May your dreams be wild, and your reality even sweeter.",
-  "May this birthday be the start of your happiest chapter yet.",
-  "May you always find magic in the ordinary days."
+const cuteImages = [
+  "/images/cute_1.jpg",
+  "/images/cute_2.jpg",
+  "/images/cute_3.jpg",
+  "/images/cute_4.jpg",
+  "/images/cute_5.jpg"
 ];
 
 export default function WishJar({ showKey = false, onCollectKey = () => {} }: WishJarProps) {
-  const [activeWish, setActiveWish] = useState<string | null>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const [lastIndex, setLastIndex] = useState<number>(-1);
 
   const [isJarBroken, setIsJarBroken] = useState(false);
@@ -198,19 +173,17 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
   };
 
   const executeJarBreak = () => {
-    let randIdx = Math.floor(Math.random() * wishes.length);
+    let randIdx = Math.floor(Math.random() * cuteImages.length);
     while (randIdx === lastIndex) {
-      randIdx = Math.floor(Math.random() * wishes.length);
+      randIdx = Math.floor(Math.random() * cuteImages.length);
     }
     setLastIndex(randIdx);
-    setActiveWish(wishes[randIdx]);
+    setActiveImage(cuteImages[randIdx]);
     setIsJarBroken(true);
   };
 
-
-
   const handleReturnToJar = () => {
-    setActiveWish(null);
+    setActiveImage(null);
     setIsJarBroken(false);
   };
 
@@ -231,15 +204,15 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/5 mb-2 shadow-inner">
             <Gift className="w-3.5 h-3.5 text-pink-glow animate-pulse" />
             <span className="font-sans text-[10px] tracking-widest text-text-secondary uppercase">
-              Interactive Wishes
+              Warning: Too Cute
             </span>
           </div>
           <CinematicText
-            text="A Jar Full Of Wishes"
+            text="A Jar of Absolute Cuteness"
             className="text-4xl md:text-5xl font-serif text-white tracking-tight leading-tight text-glow"
           />
           <CinematicText
-            text="Jar filled with special wishes. Click the jar to catch a spark and reveal a beautiful message."
+            text="A magical glass jar containing a collection of your infinite cuteness. Click it to release a random burst of pure joy!"
             className="text-xs md:text-sm font-sans text-text-secondary max-w-md leading-relaxed"
           />
         </div>
@@ -297,15 +270,15 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
             {!isJarBroken && (
               <div className="absolute -bottom-8 flex items-center gap-1.5 text-[9px] uppercase tracking-[0.25em] text-text-secondary hover:text-white transition-colors">
                 <Sparkles className="w-3 text-pink-glow animate-spin-slow" />
-                Tap the jar to draw
+                Tap the jar to release cuteness
               </div>
             )}
           </div>
         </div>
  
-        {/* Unfolding Parchment Wish Overlay */}
+        {/* Unfolding Parchment Cute Image Overlay */}
         <AnimatePresence>
-          {activeWish && (
+          {activeImage && (
             <div className="fixed inset-0 w-full h-full z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm pointer-events-auto">
               {/* Clicking outside folds it back */}
               <div className="absolute inset-0" onClick={handleReturnToJar} />
@@ -315,33 +288,37 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
                 animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
                 exit={{ opacity: 0, scale: 0.7, rotateX: 45, filter: "blur(8px)" }}
                 transition={{ type: "spring", stiffness: 90, damping: 13 }}
-                className="relative max-w-md w-full p-8 md:p-10 rounded-2xl border-[1.5px] border-[#D9C4A9]/40 bg-[#161517] bg-gradient-to-tr from-[#161517] via-[#1F1E21] to-[#161517] shadow-[0_30px_70px_rgba(0,0,0,0.9),0_0_30px_rgba(139,92,246,0.15)] flex flex-col items-center justify-center text-center gap-6 preserve-3d"
+                className="relative max-w-sm w-full p-6 rounded-3xl border-[1.5px] border-[#D9C4A9]/40 bg-[#161517] bg-gradient-to-tr from-[#161517] via-[#1F1E21] to-[#161517] shadow-[0_30px_70px_rgba(0,0,0,0.9),0_0_30px_rgba(139,92,246,0.15)] flex flex-col items-center justify-center text-center gap-4 preserve-3d"
               >
                 {/* Decorative border frame inside card */}
-                <div className="absolute inset-2 border border-[#D9C4A9]/10 rounded-xl pointer-events-none" />
+                <div className="absolute inset-2 border border-[#D9C4A9]/10 rounded-2xl pointer-events-none" />
  
                 {/* Sparkling Icon */}
-                <div className="w-10 h-10 rounded-full bg-pink-glow/10 border border-pink-glow/20 flex items-center justify-center relative">
-                  <Heart className="w-4 h-4 text-pink-glow fill-pink-glow/30" />
+                <div className="w-8 h-8 rounded-full bg-pink-glow/10 border border-pink-glow/20 flex items-center justify-center relative z-10">
+                  <Heart className="w-3.5 h-3.5 text-pink-glow fill-pink-glow/30 animate-pulse" />
                   <div className="absolute inset-0 rounded-full border border-pink-glow/30 animate-ping opacity-35" />
                 </div>
  
-                <span className="font-sans text-[9px] tracking-[0.3em] text-[#D9C4A9] uppercase font-bold mt-1">
-                  A Wish Unfolds
+                <span className="font-sans text-[8px] tracking-[0.3em] text-[#D9C4A9] uppercase font-bold relative z-10">
+                  Daily Dose of Cutie
                 </span>
  
-                {/* Poetic Wish content */}
-                <h3 className="font-serif italic text-lg md:text-xl text-white/95 leading-relaxed tracking-wide mt-2 text-glow select-text px-2">
-                  &ldquo;{activeWish}&rdquo;
-                </h3>
- 
-                <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#D9C4A9]/30 to-transparent mt-3" />
+                {/* Random Cute Image Container */}
+                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl z-10 bg-neutral-900">
+                  <Image
+                    src={activeImage}
+                    alt="Cute Capture"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 384px"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
  
                 <button
                   onClick={handleReturnToJar}
-                  className="mt-6 px-6 py-2 rounded-full font-sans tracking-widest text-[9px] uppercase border border-[#D9C4A9]/20 bg-white/5 text-[#D9C4A9] hover:bg-[#D9C4A9]/10 hover:text-white transition-all duration-300 pointer-events-auto"
+                  className="px-5 py-2 rounded-full font-sans tracking-widest text-[8px] uppercase border border-[#D9C4A9]/20 bg-white/5 text-[#D9C4A9] hover:bg-[#D9C4A9]/10 hover:text-white transition-all duration-300 pointer-events-auto relative z-10 shadow-inner"
                 >
-                  Return to Jar
+                  Close Jar
                 </button>
               </motion.div>
             </div>

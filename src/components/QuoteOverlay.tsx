@@ -999,7 +999,7 @@ export default function QuoteOverlay({
             opacity: { duration: 0.5 },
             y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="absolute bottom-8 left-0 right-0 mx-auto w-max z-30 flex flex-col items-center gap-1.5 pointer-events-none select-none"
+          className="absolute bottom-14 left-0 right-0 mx-auto w-max z-30 flex flex-col items-center gap-1.5 pointer-events-none select-none"
         >
           <span className="font-sans text-[9px] tracking-[0.25em] text-white uppercase font-bold">
             Scroll Down

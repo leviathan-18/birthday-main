@@ -566,7 +566,7 @@ export default function BirthdayCake({ showKey = false, onCollectKey = () => {} 
                   className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-tight mt-1 text-glow"
                 />
                 <CinematicText
-                  text="Activate your microphone and blow gently to extinguish the flames, or tap the candles directly to blow them out"
+                  text="Activate your microphone and say 'Love You' to extinguish the flames, or tap the candles to blow them out"
                   className="text-xs font-sans text-text-secondary max-w-sm leading-relaxed mt-1"
                 />
               </div>

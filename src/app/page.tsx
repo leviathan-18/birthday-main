@@ -32,6 +32,7 @@ export default function Home() {
   const [collectedKeys, setCollectedKeys] = useState<string[]>([]);
   const [keyLocations, setKeyLocations] = useState<string[]>([]);
   const [flyingKeys, setFlyingKeys] = useState<Array<{ id: string; startX: number; startY: number }>>([]);
+  const [isLastSectionVisible, setIsLastSectionVisible] = useState(false);
 
   // Shuffled key placement locations selection
   useEffect(() => {
@@ -45,6 +46,42 @@ export default function Home() {
     ];
     const shuffled = [...allLocations].sort(() => Math.random() - 0.5);
     setKeyLocations(shuffled.slice(0, 3));
+  }, []);
+
+  // Intersection Observer to hide Key tracker in the footer section
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+    let handleScroll: (() => void) | null = null;
+
+    const target = document.getElementById("last-section");
+    if (!target) return;
+
+    if (typeof window !== "undefined" && typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsLastSectionVisible(entry.isIntersecting);
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(target);
+    } else if (typeof window !== "undefined") {
+      // Fallback scroll listener
+      handleScroll = () => {
+        const rect = target.getBoundingClientRect();
+        setIsLastSectionVisible(rect.top < window.innerHeight);
+      };
+      window.addEventListener("scroll", handleScroll);
+      handleScroll(); // Initial check
+    }
+
+    return () => {
+      if (observer && target) {
+        observer.unobserve(target);
+      }
+      if (handleScroll && typeof window !== "undefined") {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, []);
 
   // Web Audio chime synthesizer
@@ -171,13 +208,20 @@ export default function Home() {
           <EndingScene />
 
           {/* Minimal luxury credits */}
-          <Footer />
+          <div id="last-section">
+            <Footer />
+          </div>
 
           {/* Floating Key Collection Indicator */}
           {collectedKeys.length > 0 && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: -20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
+              style={{
+                opacity: isLastSectionVisible ? 0 : 1,
+                pointerEvents: isLastSectionVisible ? "none" : "auto",
+                visibility: isLastSectionVisible ? "hidden" : "visible",
+              }}
               className="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 p-3 px-4 rounded-full bg-neutral-950/80 border border-amber-500/30 text-amber-400 font-sans text-xs uppercase tracking-widest flex items-center gap-2.5 shadow-[0_0_20px_rgba(245,158,11,0.15)] backdrop-blur-md"
             >
               <motion.div
