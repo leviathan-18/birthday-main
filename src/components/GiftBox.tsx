@@ -136,7 +136,12 @@ Lekin ek baat main zaroor kahunga ki aapse milne ke baad, main pehle jaisa nahi 
 
 Jaise hi pahuncha, maine sab se pehle aapko dhoondha. Aap sab se peeche wali bench par baithi thi. Us din jo maine mehsoos kiya, zindagi mein kabhi aisi ajeeb feeling mehsoos nahi ki thi. Aap meri aankhon ke saamne thi, par main kuch keh nahi paa raha tha. Main jaanta tha agar aaj na kaha toh shayad zindagi bhar aapka chehra nahi dekh paunga. Main bas aapko dekh raha tha aur meri aankhon mein aansu the. Bilkul shiddat se, maine mann bhar ke aapko dekha... jitna main dekh sakta tha.`,
 
-        `Jab main aakhiri practical de kar baahar aaya, toh ladkiyon ki line lagi hui thi. Maine aakhiri baar poori mohabbat se aapki taraf dekha aur dil hi dil mein alwida kaha. Kyunki main jaanta tha main aapko zindagi bhar nahi bhula sakta, bhale hi mera naseeb aisa ho ki aapko mera naam tak na pata ho... ya yeh na pata ho ki koi shakhs sirf aapke is duniya mein hone se kitni mohabbat karta hai.`
+        `Jab main aakhiri practical de kar baahar aaya, toh ladkiyon ki line lagi hui thi. Maine aakhiri baar poori mohabbat se aapki taraf dekha aur dil hi dil mein alwida kaha. Kyunki main jaanta tha main aapko zindagi bhar nahi bhula sakta, bhale hi mera naseeb aisa ho ki aapko mera naam tak na pata ho... ya yeh na pata ho ki koi shakhs sirf aapke is duniya mein hone se kitni mohabbat karta hai.`,
+
+        `Ye bhi mumkin hai ki ek din woh pashima hokr mere pass ay, Zamane se kinara krle.
+Tuu ke masoom bhi hai, Zuud faramosh bhi hai, Uski paimaa'n Shiknii ko bhi gawara krle.
+Aur mian jisne tujhe apna maseeha samjha, Ek dukh aur bhi Pahle ki tarah seh jaun.
+Ispe pehli bhi kai Eh-de-wafa tute hai. Uski dohrahe pe chup chap khada reh jaun!`
       ]
     },
   ];
@@ -562,7 +567,7 @@ Jaise hi pahuncha, maine sab se pehle aapko dhoondha. Aap sab se peeche wali ben
                         </div>
                       </div>
                     )}
-                    {activeLetter.id === "letter-3" && currentPage === 8 && (
+                    {activeLetter.id === "letter-3" && currentPage === 9 && (
                       <div className="mt-4 flex flex-col gap-3">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
@@ -571,7 +576,7 @@ Jaise hi pahuncha, maine sab se pehle aapko dhoondha. Aap sab se peeche wali ben
                           className="max-h-[160px] object-contain rounded-xl border border-white/10 shadow-lg mx-auto"
                         />
                         <div className="text-glow font-bold text-sm md:text-base text-center text-white/95">
-                          في الدنيا والآخرة
+                          Is duniya mein aur akhirat mein!
                         </div>
                       </div>
                     )}
