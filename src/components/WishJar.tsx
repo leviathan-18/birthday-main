@@ -30,12 +30,17 @@ const cuteImages = [
   "/images/cute_2.jpg",
   "/images/cute_3.jpg",
   "/images/cute_4.jpg",
-  "/images/cute_5.jpg"
+  "/images/cute_5.jpg",
+  "/images/cute_6.jpg",
+  "/images/cute_7.jpg",
+  "/images/cute_8.jpg",
+  "/images/cute_9.jpg",
+  "/images/cute_10.png"
 ];
 
 export default function WishJar({ showKey = false, onCollectKey = () => {} }: WishJarProps) {
   const [activeImage, setActiveImage] = useState<string | null>(null);
-  const [lastIndex, setLastIndex] = useState<number>(-1);
+  const [unseenIndices, setUnseenIndices] = useState<number[]>([]);
 
   const [isJarBroken, setIsJarBroken] = useState(false);
   const [keyLeft, setKeyLeft] = useState("left-5");
@@ -93,6 +98,27 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
     }
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (activeImage) {
+      document.body.classList.add("overflow-hidden");
+      if (window.lenisInstance) {
+        window.lenisInstance.stop();
+      }
+    } else {
+      document.body.classList.remove("overflow-hidden");
+      if (window.lenisInstance) {
+        window.lenisInstance.start();
+      }
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+      if (typeof window !== "undefined" && window.lenisInstance) {
+        window.lenisInstance.start();
+      }
+    };
+  }, [activeImage]);
 
   // Render loop for jar canvas
   useEffect(() => {
@@ -173,12 +199,15 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
   };
 
   const executeJarBreak = () => {
-    let randIdx = Math.floor(Math.random() * cuteImages.length);
-    while (randIdx === lastIndex) {
-      randIdx = Math.floor(Math.random() * cuteImages.length);
+    let currentUnseen = [...unseenIndices];
+    if (currentUnseen.length === 0) {
+      currentUnseen = Array.from({ length: cuteImages.length }, (_, i) => i);
     }
-    setLastIndex(randIdx);
-    setActiveImage(cuteImages[randIdx]);
+    const poolIndex = Math.floor(Math.random() * currentUnseen.length);
+    const chosenIndex = currentUnseen[poolIndex];
+    currentUnseen.splice(poolIndex, 1);
+    setUnseenIndices(currentUnseen);
+    setActiveImage(cuteImages[chosenIndex]);
     setIsJarBroken(true);
   };
 
@@ -212,7 +241,7 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
             className="text-4xl md:text-5xl font-serif text-white tracking-tight leading-tight text-glow"
           />
           <CinematicText
-            text="A magical glass jar containing a collection of your infinite cuteness. Click it to release a random burst of pure joy!"
+            text="apne jaise cutie type logon ko dekhna h? then clik on the Jar!"
             className="text-xs md:text-sm font-sans text-text-secondary max-w-md leading-relaxed"
           />
         </div>

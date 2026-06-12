@@ -177,7 +177,7 @@ export default function RelationshipCounter({ showKey = false, onCollectKey = ()
 
         <div className="text-center mt-12">
           <span className="font-serif italic text-xs text-text-secondary">
-            &ldquo;Every second by your side is a chapter I cherish forever.&rdquo; ✨
+            &ldquo;It&rsquo;s officially been 9 years. To know the full story, unlock the box.&rdquo; ✨
           </span>
         </div>
 

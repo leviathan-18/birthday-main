@@ -30,23 +30,8 @@ export default function Home() {
   
   // Advanced Story Experience Upgrade States
   const [collectedKeys, setCollectedKeys] = useState<string[]>([]);
-  const [keyLocations, setKeyLocations] = useState<string[]>([]);
   const [flyingKeys, setFlyingKeys] = useState<Array<{ id: string; startX: number; startY: number }>>([]);
   const [isLastSectionVisible, setIsLastSectionVisible] = useState(false);
-
-  // Shuffled key placement locations selection
-  useEffect(() => {
-    const allLocations = [
-      'memory-grid',
-      'melodies',
-      'constellation',
-      'wish-jar',
-      'birthday-cake',
-      'relationship'
-    ];
-    const shuffled = [...allLocations].sort(() => Math.random() - 0.5);
-    setKeyLocations(shuffled.slice(0, 3));
-  }, []);
 
   // Intersection Observer to hide Key tracker in the footer section
   useEffect(() => {
@@ -61,7 +46,7 @@ export default function Home() {
         ([entry]) => {
           setIsLastSectionVisible(entry.isIntersecting);
         },
-        { threshold: 0.1 }
+        { threshold: 0, rootMargin: "0px" }
       );
       observer.observe(target);
     } else if (typeof window !== "undefined") {
@@ -146,50 +131,77 @@ export default function Home() {
           />
 
           {/* Grid of Shared Memories */}
-          <LazyMount fallback={<section id="journey" className="w-full py-32 bg-[#0A0A0C] border-t border-glass relative min-h-[600px] md:min-h-[800px] flex items-center justify-center" />}>
-            <MemoryGrid 
-              showKey={keyLocations.includes('memory-grid') && !collectedKeys.includes('memory-grid')}
-              onCollectKey={(e) => handleCollectKey('memory-grid', e)}
-            />
-          </LazyMount>
+          <div className="relative w-full">
+            <LazyMount fallback={<section id="journey" className="w-full py-32 bg-[#0A0A0C] border-t border-glass relative min-h-[600px] md:min-h-[800px] flex items-center justify-center" />}>
+              <MemoryGrid 
+                showKey={false}
+              />
+            </LazyMount>
+            {!collectedKeys.includes('key-1') && (
+              <div
+                onClick={(e) => handleCollectKey('key-1', e)}
+                className="absolute top-36 left-6 md:left-12 w-11 h-11 rounded-full bg-neutral-950/90 border border-amber-400 text-amber-300 z-30 cursor-pointer animate-float-slow flex items-center justify-center shadow-[0_0_20px_rgba(251,191,36,0.7)] hover:scale-110 active:scale-95 transition-all duration-300 pointer-events-auto"
+                title="Golden Key"
+              >
+                <Key className="w-5 h-5 text-amber-300" />
+              </div>
+            )}
+          </div>
 
           {/* Curated Sensory Favorite Coordinates */}
           <LazyMount fallback={<section id="moments" className="w-full py-32 bg-[#050505] border-t border-glass relative min-h-[600px] md:min-h-[800px] flex items-center justify-center" />}>
             <FavoriteThings 
-              showKey={keyLocations.includes('melodies') && !collectedKeys.includes('melodies')}
-              onCollectKey={(e) => handleCollectKey('melodies', e)}
+              showKey={false}
             />
           </LazyMount>
 
           {/* Live Relationship Counter */}
           <LazyMount fallback={<section className="w-full py-32 bg-[#0A0A0C] border-t border-glass relative min-h-[400px] md:min-h-[500px] flex items-center justify-center" />}>
             <RelationshipCounter 
-              showKey={keyLocations.includes('relationship') && !collectedKeys.includes('relationship')}
-              onCollectKey={(e) => handleCollectKey('relationship', e)}
+              showKey={false}
             />
           </LazyMount>
 
           {/* Constellation Name Reveal */}
-          <LazyMount fallback={<section className="relative w-full h-[150vh] bg-black select-none flex items-center justify-center" />}>
-            <ConstellationReveal 
-              showKey={keyLocations.includes('constellation') && !collectedKeys.includes('constellation')}
-              onCollectKey={(e) => handleCollectKey('constellation', e)}
-            />
-          </LazyMount>
+          <div className="relative w-full">
+            <LazyMount fallback={<section className="relative w-full h-[150vh] bg-black select-none flex items-center justify-center" />}>
+              <ConstellationReveal 
+                showKey={false}
+              />
+            </LazyMount>
+            {!collectedKeys.includes('key-2') && (
+              <div
+                onClick={(e) => handleCollectKey('key-2', e)}
+                className="absolute top-1/4 right-6 md:right-12 w-11 h-11 rounded-full bg-neutral-950/90 border border-amber-400 text-amber-300 z-30 cursor-pointer animate-float-slow flex items-center justify-center shadow-[0_0_20px_rgba(251,191,36,0.7)] hover:scale-110 active:scale-95 transition-all duration-300 pointer-events-auto"
+                title="Golden Key"
+              >
+                <Key className="w-5 h-5 text-amber-300" />
+              </div>
+            )}
+          </div>
 
           {/* Interactive Wish Jar */}
-          <LazyMount fallback={<section className="w-full min-h-screen py-24 bg-[#050507] border-t border-glass relative flex flex-col items-center justify-center" />}>
-            <WishJar 
-              showKey={keyLocations.includes('wish-jar') && !collectedKeys.includes('wish-jar')}
-              onCollectKey={(e) => handleCollectKey('wish-jar', e)}
-            />
-          </LazyMount>
+          <div className="relative w-full">
+            <LazyMount fallback={<section className="w-full min-h-screen py-24 bg-[#050507] border-t border-glass relative flex flex-col items-center justify-center" />}>
+              <WishJar 
+                showKey={false}
+              />
+            </LazyMount>
+            {!collectedKeys.includes('key-3') && (
+              <div
+                onClick={(e) => handleCollectKey('key-3', e)}
+                className="absolute top-1/3 left-6 md:left-12 w-11 h-11 rounded-full bg-neutral-950/90 border border-amber-400 text-amber-300 z-30 cursor-pointer animate-float-slow flex items-center justify-center shadow-[0_0_20px_rgba(251,191,36,0.7)] hover:scale-110 active:scale-95 transition-all duration-300 pointer-events-auto"
+                title="Golden Key"
+              >
+                <Key className="w-5 h-5 text-amber-300" />
+              </div>
+            )}
+          </div>
 
           {/* Birthday Cake Candle Blow */}
           <LazyMount fallback={<section id="journey-cake" className="w-full min-h-screen py-24 bg-[#030304] border-t border-glass relative flex flex-col items-center justify-center" />}>
             <BirthdayCake 
-              showKey={keyLocations.includes('birthday-cake') && !collectedKeys.includes('birthday-cake')}
-              onCollectKey={(e) => handleCollectKey('birthday-cake', e)}
+              showKey={false}
             />
           </LazyMount>
 
@@ -222,13 +234,13 @@ export default function Home() {
                 pointerEvents: isLastSectionVisible ? "none" : "auto",
                 visibility: isLastSectionVisible ? "hidden" : "visible",
               }}
-              className="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 p-3 px-4 rounded-full bg-neutral-950/80 border border-amber-500/30 text-amber-400 font-sans text-xs uppercase tracking-widest flex items-center gap-2.5 shadow-[0_0_20px_rgba(245,158,11,0.15)] backdrop-blur-md"
+              className="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 p-2 py-1.5 px-3 md:py-2 md:px-3.5 rounded-full bg-neutral-950/80 border border-amber-500/30 text-amber-400 font-sans text-[10px] md:text-xs uppercase tracking-widest flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.12)] backdrop-blur-md"
             >
               <motion.div
                 animate={{ rotate: [0, 15, -15, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
               >
-                <Key className="w-4 h-4 text-amber-300 fill-amber-300/10" />
+                <Key className="w-3.5 h-3.5 text-amber-300 fill-amber-300/10" />
               </motion.div>
               <span>{collectedKeys.length} / 3 Keys Found</span>
             </motion.div>

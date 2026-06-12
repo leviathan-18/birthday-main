@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useSoundtrack } from "@/context/SoundtrackContext";
 
 interface Particle {
   id: number;
@@ -79,9 +78,6 @@ const getPointsFor3DHeart = (count: number): Array<{ x: number; y: number; z: nu
 export default function EndingScene() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const heartbeatAudioRef = useRef<HTMLAudioElement | null>(null);
-  
-  const { isPlaying } = useSoundtrack();
 
   const [animStage, setAnimStage] = useState<'deep-space' | 'gathering' | 'vortex' | 'heart-form' | 'heart-light' | 'heart-hold' | 'fracture' | 'universe' | 'drift-final'>('deep-space');
   const [msgStage, setMsgStage] = useState<'none' | 'bigger' | 'moments' | 'birthday'>('none');
@@ -855,32 +851,6 @@ export default function EndingScene() {
     };
   }, [hasStarted]);
 
-  // Heartbeat sound & volume playback control - deferred until hasStarted
-  useEffect(() => {
-    if (!hasStarted) return;
-
-    const heartbeat = new Audio("https://assets.mixkit.co/active_storage/sfx/2047/2047-preview.mp3");
-    heartbeat.loop = true;
-    heartbeat.volume = 0.5;
-    heartbeatAudioRef.current = heartbeat;
-
-    const globalAudio = document.getElementById("bg-soundtrack-audio") as HTMLAudioElement | null;
-
-    if (isPlaying) {
-      heartbeat.play().catch(e => console.log("Heartbeat play blocked:", e));
-      if (globalAudio) {
-        globalAudio.volume = 0.25;
-      }
-    }
-
-    return () => {
-      heartbeat.pause();
-      heartbeatAudioRef.current = null;
-      if (globalAudio) {
-        globalAudio.volume = 1.0;
-      }
-    };
-  }, [hasStarted, isPlaying]);
 
   return (
     <div

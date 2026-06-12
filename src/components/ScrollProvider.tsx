@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 declare global {
   interface Window {
     lastScrollVelocity?: number;
+    lenisInstance?: { stop: () => void; start: () => void };
   }
 }
 
@@ -25,6 +26,8 @@ export default function ScrollProvider({ children }: { children: React.ReactNode
       smoothWheel: true,
       wheelMultiplier: 0.9,
     });
+
+    window.lenisInstance = lenis;
 
     // Track scroll velocity for Matter.js physics
     lenis.on("scroll", (e: unknown) => {
@@ -168,6 +171,7 @@ export default function ScrollProvider({ children }: { children: React.ReactNode
 
     return () => {
       lenis.destroy();
+      window.lenisInstance = undefined;
       window.removeEventListener("resize", handleResize);
       clearTimeout(animTimeout);
       if (idleId !== null && typeof window !== "undefined" && "cancelIdleCallback" in window) {

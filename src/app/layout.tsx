@@ -33,7 +33,7 @@ export default function RootLayout({
         <link rel="preload" href="/images/memory_adventure.png" as="image" />
         <link rel="preload" href="/images/memory_cozy.png" as="image" />
         <link rel="preload" href="/images/memory_starry.png" as="image" />
-        <link rel="preload" href="/images/memory_celebrate.png" as="image" />
+        <link rel="preload" href="/images/memory_celebrate.jpg" as="image" />
 
         {/* Preload first 2 floating hero photos */}
         <link rel="preload" href="/images/fr-1.png" as="image" />

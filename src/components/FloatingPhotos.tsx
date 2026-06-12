@@ -115,10 +115,10 @@ export default function FloatingPhotos({ scrollYProgress, showKey = false, onCol
       isLarge: false,
     },
     {
-      src: "/images/memory_celebrate.png",
+      src: "/images/fr_celebrate.png",
       alt: "Holding sparklers at twilight",
       date: "Dec 2025",
-      caption: "Finally found my person",
+      caption: "Finally found my Fr",
       opacity: p5Opacity,
       x: p5X,
       y: p5Y,
@@ -163,7 +163,8 @@ export default function FloatingPhotos({ scrollYProgress, showKey = false, onCol
                 fill
                 sizes={photo.isLarge ? "(max-width: 768px) 260px, 340px" : "(max-width: 768px) 200px, 260px"}
                 className="object-cover transition-transform duration-700 hover:scale-105"
-                priority={idx < 2}
+                priority={photo.isLarge || idx < 2}
+                quality={95}
               />
               {/* Leaning against the photo */}
               {showKey && photo.src.includes("fr-5") && (

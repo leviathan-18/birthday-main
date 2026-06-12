@@ -78,7 +78,7 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
     return () => unsubscribe();
   }, [scrollYProgress, revealProgressMV]);
 
-  // Define normalized points for "DEAREST"
+  // Define normalized points for "FARHEEN"
   // Horizontal bounds: -0.42 to 0.42
   // Letter box: width = 0.07, height = 0.18
   // Columns: -0.42, -0.28, -0.14, 0, 0.14, 0.28, 0.42
@@ -103,7 +103,7 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
     return () => observer.disconnect();
   }, []);
 
-  // Define normalized points for "DEAREST"
+  // Define normalized points for "FARHEEN"
   // Horizontal bounds: -0.42 to 0.42
   // Letter box: width = 0.07, height = 0.18
   // Columns: -0.42, -0.28, -0.14, 0, 0.14, 0.28, 0.42
@@ -122,21 +122,12 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
     const columns = [-0.42, -0.28, -0.14, 0, 0.14, 0.28, 0.42];
     
     const letterPaths: Array<(cx: number) => Array<{x: number, y: number}>> = [
-      // D
-      (cx) => [
-        { x: cx - 0.035, y: -0.09 }, { x: cx - 0.035, y: -0.054 }, { x: cx - 0.035, y: -0.018 },
-        { x: cx - 0.035, y: 0.018 }, { x: cx - 0.035, y: 0.054 }, { x: cx - 0.035, y: 0.09 },
-        { x: cx - 0.015, y: -0.09 }, { x: cx + 0.01, y: -0.09 }, { x: cx + 0.03, y: -0.06 },
-        { x: cx + 0.035, y: -0.02 }, { x: cx + 0.035, y: 0.02 }, { x: cx + 0.03, y: 0.06 },
-        { x: cx + 0.01, y: 0.09 }, { x: cx - 0.015, y: 0.09 }
-      ],
-      // E
+      // F
       (cx) => [
         { x: cx - 0.035, y: -0.09 }, { x: cx - 0.035, y: -0.054 }, { x: cx - 0.035, y: -0.018 },
         { x: cx - 0.035, y: 0.018 }, { x: cx - 0.035, y: 0.054 }, { x: cx - 0.035, y: 0.09 },
         { x: cx - 0.01, y: -0.09 }, { x: cx + 0.015, y: -0.09 }, { x: cx + 0.035, y: -0.09 },
-        { x: cx - 0.01, y: 0 }, { x: cx + 0.015, y: 0 },
-        { x: cx - 0.01, y: 0.09 }, { x: cx + 0.015, y: 0.09 }, { x: cx + 0.035, y: 0.09 }
+        { x: cx - 0.01, y: 0 }, { x: cx + 0.015, y: 0 }
       ],
       // A
       (cx) => [
@@ -153,7 +144,13 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
         { x: cx + 0.035, y: -0.025 }, { x: cx + 0.015, y: 0 }, { x: cx - 0.01, y: 0 },
         { x: cx + 0.005, y: 0.025 }, { x: cx + 0.018, y: 0.05 }, { x: cx + 0.03, y: 0.075 }, { x: cx + 0.038, y: 0.09 }
       ],
-      // E (Same)
+      // H
+      (cx) => [
+        { x: cx - 0.035, y: -0.09 }, { x: cx - 0.035, y: -0.045 }, { x: cx - 0.035, y: 0 }, { x: cx - 0.035, y: 0.045 }, { x: cx - 0.035, y: 0.09 },
+        { x: cx + 0.035, y: -0.09 }, { x: cx + 0.035, y: -0.045 }, { x: cx + 0.035, y: 0 }, { x: cx + 0.035, y: 0.045 }, { x: cx + 0.035, y: 0.09 },
+        { x: cx - 0.015, y: 0 }, { x: cx, y: 0 }, { x: cx + 0.015, y: 0 }
+      ],
+      // E
       (cx) => [
         { x: cx - 0.035, y: -0.09 }, { x: cx - 0.035, y: -0.054 }, { x: cx - 0.035, y: -0.018 },
         { x: cx - 0.035, y: 0.018 }, { x: cx - 0.035, y: 0.054 }, { x: cx - 0.035, y: 0.09 },
@@ -161,16 +158,19 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
         { x: cx - 0.01, y: 0 }, { x: cx + 0.015, y: 0 },
         { x: cx - 0.01, y: 0.09 }, { x: cx + 0.015, y: 0.09 }, { x: cx + 0.035, y: 0.09 }
       ],
-      // S
+      // E
       (cx) => [
-        { x: cx + 0.035, y: -0.075 }, { x: cx + 0.02, y: -0.09 }, { x: cx - 0.01, y: -0.09 }, { x: cx - 0.035, y: -0.06 },
-        { x: cx - 0.02, y: -0.025 }, { x: cx, y: 0 }, { x: cx + 0.02, y: 0.025 },
-        { x: cx + 0.035, y: 0.06 }, { x: cx + 0.01, y: 0.09 }, { x: cx - 0.02, y: 0.09 }, { x: cx - 0.035, y: 0.075 }
+        { x: cx - 0.035, y: -0.09 }, { x: cx - 0.035, y: -0.054 }, { x: cx - 0.035, y: -0.018 },
+        { x: cx - 0.035, y: 0.018 }, { x: cx - 0.035, y: 0.054 }, { x: cx - 0.035, y: 0.09 },
+        { x: cx - 0.01, y: -0.09 }, { x: cx + 0.015, y: -0.09 }, { x: cx + 0.035, y: -0.09 },
+        { x: cx - 0.01, y: 0 }, { x: cx + 0.015, y: 0 },
+        { x: cx - 0.01, y: 0.09 }, { x: cx + 0.015, y: 0.09 }, { x: cx + 0.035, y: 0.09 }
       ],
-      // T
+      // N
       (cx) => [
-        { x: cx - 0.035, y: -0.09 }, { x: cx - 0.018, y: -0.09 }, { x: cx, y: -0.09 }, { x: cx + 0.018, y: -0.09 }, { x: cx + 0.035, y: -0.09 },
-        { x: cx, y: -0.054 }, { x: cx, y: -0.018 }, { x: cx, y: 0.018 }, { x: cx, y: 0.054 }, { x: cx, y: 0.09 }
+        { x: cx - 0.035, y: -0.09 }, { x: cx - 0.035, y: -0.045 }, { x: cx - 0.035, y: 0 }, { x: cx - 0.035, y: 0.045 }, { x: cx - 0.035, y: 0.09 },
+        { x: cx + 0.035, y: -0.09 }, { x: cx + 0.035, y: -0.045 }, { x: cx + 0.035, y: 0 }, { x: cx + 0.035, y: 0.045 }, { x: cx + 0.035, y: 0.09 },
+        { x: cx - 0.018, y: -0.045 }, { x: cx, y: 0 }, { x: cx + 0.018, y: 0.045 }
       ]
     ];
 

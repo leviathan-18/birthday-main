@@ -162,7 +162,7 @@ const PaperNameSegment = ({ char, isTorn }: { char: string; isTorn: boolean }) =
   );
 };
 
-const nameChars = ["D", "e", "a", "r", "e", "s", "t"];
+const nameChars = ["F", "A", "R", "H", "E", "E", "N"];
 
 export default function QuoteOverlay({ 
   scrollYProgress, 
@@ -235,19 +235,16 @@ export default function QuoteOverlay({
       opacity: beat2Opacity,
       y: beat2Y,
       title: "I have faith in what I see, now I know I have met an angel in person, she looks perfect.",
-      text: "From random laughs to unforgettable moments, every second became something worth holding onto.",
     },
     {
       opacity: beat3Opacity,
       y: beat3Y,
       title: "You became a beautiful part of life.",
-      text: "Some connections are impossible to explain — they just quietly become important.",
     },
     {
       opacity: beat4Opacity,
       y: beat4Y,
       title: "May the universe give you back all the love and light you give to everyone else.",
-      text: "For the smiles, the comfort, the memories, and the happiness you brought into this world.",
     },
     {
       opacity: beat5Opacity,

@@ -293,7 +293,7 @@ export default function FavoriteThings({ showKey = false, onCollectKey = () => {
           />
           <div className="w-16 h-[1px] bg-accent-gradient mx-auto mt-6 mb-4" />
           <CinematicText
-            text="I never knew that you are the missing sound of my Life!"
+            text="I always knew that you are the missing sound of my Life!"
             className="text-sm font-sans text-text-secondary leading-relaxed max-w-xl mx-auto"
           />
         </div>

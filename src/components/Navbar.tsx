@@ -35,7 +35,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <Heart className="w-5 h-5 text-pink-glow fill-pink-glow/20 transition-transform duration-500 group-hover:scale-125" />
           <span className="font-serif tracking-widest text-lg font-semibold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
-            DEAREST
+            MAK x FRN
           </span>
         </div>
 

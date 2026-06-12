@@ -185,10 +185,6 @@ export default function MemoryGrid({ showKey = false, onCollectKey = () => {} }:
             className="text-4xl md:text-5xl font-serif text-white tracking-tight text-glow"
           />
           <div className="w-16 h-[1px] bg-accent-gradient mx-auto mt-6 mb-4" />
-          <CinematicText
-            text="A few confessions from a heart that never learned to forget you."
-            className="text-sm font-sans text-text-secondary leading-relaxed"
-          />
         </div>
 
         {/* Cards Grid */}
@@ -250,7 +246,7 @@ export default function MemoryGrid({ showKey = false, onCollectKey = () => {} }:
                   <span className="font-sans text-[8px] sm:text-[9px] tracking-widest text-text-secondary uppercase">
                     THOUGHT 0{card.id}
                   </span>
-                  <div className="flex items-center gap-1 px-3 py-1 bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.2)] text-[rgba(255,255,255,0.7)] rounded-[20px] font-medium text-[10px] tracking-wider transition-all duration-300 opacity-80 group-hover:opacity-100 hover:opacity-100 group-hover:border-[rgba(255,255,255,0.4)] hover:border-[rgba(255,255,255,0.4)]">
+                  <div className="flex items-center gap-1 px-3 py-1 bg-white/10 border border-pink-glow/30 text-white/90 rounded-[20px] font-medium text-[10px] tracking-wider transition-all duration-300 shadow-[0_0_10px_rgba(236,72,153,0.15)] group-hover:bg-gradient-to-br group-hover:from-accent-glow group-hover:to-pink-glow group-hover:border-pink-glow/60 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(236,72,153,0.5)]">
                     <span className="text-[8px] translate-y-[-0.5px]">▶</span>
                     <span>PLAY</span>
                   </div>

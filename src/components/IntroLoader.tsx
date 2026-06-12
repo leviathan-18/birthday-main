@@ -44,7 +44,7 @@ export default function IntroLoader({ onEnter }: IntroLoaderProps) {
     "/images/memory_adventure.png",
     "/images/memory_cozy.png",
     "/images/memory_starry.png",
-    "/images/memory_celebrate.png",
+    "/images/memory_celebrate.jpg",
   ];
 
   return (
@@ -148,7 +148,7 @@ export default function IntroLoader({ onEnter }: IntroLoaderProps) {
               </div>
               
               <p style={{ direction: "rtl", textAlign: "center" }} className="font-serif text-5xl md:text-6xl text-white tracking-wide">
-                في الدنيا والآخرة
+                أنتِ قلبي يا فرحين
               </p>
               
               <p className="text-xs font-sans text-text-secondary leading-relaxed max-w-xs">

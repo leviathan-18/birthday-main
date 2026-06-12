@@ -12,8 +12,8 @@ interface GiftBoxProps {
 interface Letter {
   id: string;
   title: string;
-  date: string;
-  content: string;
+  content?: string;
+  pages?: string[];
 }
 
 export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxProps) {
@@ -24,28 +24,120 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
   const [isShaking, setIsShaking] = useState(false);
   const [showRedGlow, setShowRedGlow] = useState(false);
   const [activeLetter, setActiveLetter] = useState<Letter | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationFrameId = useRef<number | null>(null);
 
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [activeLetter]);
+
   const letters: Letter[] = [
     {
       id: "letter-1",
-      title: "Midnight Reflections",
-      date: "Nov 14, 2025",
-      content: `Entry #12 • Midnight Reflections\n\nI think about the way you laugh when you are completely exhausted, the quiet way your presence settles the chaos in a room, and how you notice things in the world that everyone else rushes past.\n\nThere are so many words I write in my mind that never find their way to my lips. Some feelings are too delicate to be spoken aloud—they belong here, preserved in the quiet pages of a heart that holds onto you.`,
+      title: "My Moon Fr",
+      pages: [
+        `You are an angel from heaven. I'm not worthy of your love!
+But one thing i can say withtout even thinking twice that you are never be unloved by me!
+
+If i had a thousand lives, i will wish to love you in every one of them.
+And if i had none, then there's no one to love you, the way i do.
+And only Allah knows, how much i like you.
+
+Do you know what i wish for,
+Your presence in my life,
+And I never gave my heart to anyone, because my heart is willingly with you.
+Take the whole heart, I'm not keeping it for anyone, but you! 🤍`,
+
+        `You frequently asked me about yourself that ,what i liked about you, I tried to describe you, but every metaphor felt short,
+Even the stars are just dust, compared to light in your eyes.
+
+And every time you say, go find someone else, I'm not the one you should admire.
+So i have to tell you that,What will I do with a whole garden if my favourite flower isn't there!
+
+If God give me power to write my destiny by myself, then, I would simply write your name and break the pen.
+
+You said that, you are not good enough,not beautiful enough,then i thought of this one, that- 
+Kabhi tum nadaan , kabhi tum sachchi lgti ho.
+Kabhi tum masoom toh kabhi bachchi lgti ho.
+Harr cheez apni waqt or achchi lgti h,aur ek tum ho jo mujhe har waqt achchi lgti ho.`,
+
+        `From the day first, When i see you ,I knew you are the missing piece of my life, You complete me!
+I know one thing that,Whatever our souls are made of, hers and mine are the same.
+Its always been you, always.
+
+In the most selfish way possible, I hope nobody admires you the way I do.`
+      ]
     },
     {
       id: "letter-2",
       title: "Pieces of You",
-      date: "Dec 20, 2025",
-      content: `Entry #15 • Pieces of You\n\nSometimes it's the smallest things. The way you stop to look at the sky when the clouds turn pink. The silent sanctuary you create just by listening. Your soft laughter that makes the entire room feel lighter.\n\nEvery memory with you is a tiny piece of a puzzle I didn't know I was trying to solve, and now that it's complete, I see a beautiful picture of us.`,
+      pages: [
+        `Agar aaj koi mujhse pooche ki main aapse itni mohabbat kyun karta hoon, toh mere paas koi wajah nahi hai. Maine kahin suna tha ki jis se tum sachche dil se pyaar karte ho, use chahne ki koi wajah nahi hoti. Aur us shakhs ki mohabbat bhi aapke liye zaroori nahi hoti... aap bas uske liye har hadd se guzar jaane ki chaah rakhte hain, chahe woh aapko pasand kare ya na kare.
+
+Maine in 5 saalon me kya kya imagine nhi kiya ki Farheen hoti toh aisa hota hum ye krte,jaise baarish me hum gaadi lekr ghumne nikla jaynge bheegte hue, fir aisa hoga, thandi hogi toh hum aisa krenge, Eid hogi toh ek jaise kapde pahenge, ek doosre ke ghar jaynge saath saath. 
+Duniya ghoomenge ek saath, bina kisi ke parwah kiye hue bgair, aur bhi boht kuch.
+Aur yahi cheezein mere khwaabon me bhi aati hein aaj bhi, aur uss pal aisa lgta h sb sach h, main iss duniya ka sbse khush naseeb ensaan ban gya hu.
+Khwaab hi sahi,km se km aapse mulaqat toh kr paata hu,jo asliyat se km nhi lgta.`,
+
+        `Khwaab ho ya haqeeqat, dono jahan me main aapko dekhta hu  toh meri aankhein bhar aati hein,mohabbat se hmesha, chahe pehli baar dekhu ya hazar bhar.
+
+Asliyat ye h ke-
+Yu toh kitne haseen chehre hein, mgr main sirf tumhara chehra dekhna chahunga.
+Woh dekhe apne apne chand ko, main sirf tumhari aankhein dekhna chahunga.
+Woh khwaab jisme tum nazar aao, wih khwaab main hrr roz dekhna chahunga.
+
+Aapke sath bitaya hua aur aapse baat kiya hua har ek second mere liye ek haseen khwaab jaisa hi hai aur hamesha rahega. Farheen ab jaanti hai ki main kaun hoon aur main unke liye kya mehsoos karta hoon... mere liye is se badh kar koi khushi nahi ho sakti.`,
+
+        `Aur shukr guzaar hu ,apni behn ka aur huma appi ka aur sbse zyada aapka , jinhone mujhe smjha wrna aaj bhi ,kuch na badalta, meri ksimat me aaj bhi Farheen ko dekhna naseeb na hota.
+
+Ek sher h ke,
+Main tumhari aankhon me pyar bnke rehta hu , noor bnke basta hu,khwaab bnke zinda hun.
+Mere saare khwaab in jameel aankhon ke ek koshe me tum chhupa kr rakh lena.
+Aur kabhi ye khwaab phool bnke maheke toh, inke khushbuo mein tum mere naam ke sb harf ehtiyat se rkhna💖.`
+      ]
     },
     {
       id: "letter-3",
-      title: "When My Heart Speaks",
-      date: "Feb 14, 2026",
-      content: `Entry #21 • When My Heart Speaks\n\nYou became the calm that I didn't know my soul was searching for. In a world full of temporary things, your connection is the only thing that feels permanent, warm, and true.\n\nIf my heart could speak, it would tell you that you are my favorite page in this long story.`,
+      title: "I found You",
+      pages: [
+        `Assalam o Alaikum!
+Kabhi kabhi zindagi ki mamuli raahon mein mohabbat yun milti hai jaise koi khwaab achanak haqeeqat ban gaya ho... bilkul waise hi, jaise aap mujhe mili.
+
+Aapko shayad yeh lagta hai ki maine aapko sab se pehle 11th class mein dekha tha, par yeh poora sach nahi hai. Wahan toh maine aapko doosri dafa dekha tha. Pehli dafa toh hamari mulaqat Kamhariya ke Urs mein hui thi. Shayad is baat par kisi ko yaqeen na aaye, par main chahunga ki aap yaqeen karein, kyunki aap jaanti hain ki main aapse kabhi jhooth nahi kehta.`,
+
+        `Jab main 7th class mein tha, tab doston ke sath pehli baar Kamhariya ke Urs mein gaya tha. Wahan jhoolon wale ground mein aapke sath paanch aur log the. Main aapke peeche-peeche gate tak bhi gaya tha. Phir jab aap auto mein baithi toh maine dekha ki aap sab kisi aur raah par ja rahe hain, tab mujhe samajh aaya ki yahan paas hi ek aur gaon hai—Mancha. Tab pehli baar maine 'Mancha' ka naam suna tha.
+
+Us din se pehle mujhe koi pasand nahi aaya tha, aur us umar mein waise bhi pasand-napasand ki samajh kahan hoti hai? Par kaafi dinon tak main aapke baare mein sochta raha... khayaalon mein na jaane kya kya sochta. Khair, aapka chehra kabhi mere zehn se nahi utra. Jab bhi main us pal ko yaad karta, toh dil ke andar ek ajeeb si thandi hawa chalne lagti thi, par mujhe samajh nahi aata tha ki yeh kya hai aur kyun hai.`,
+
+        `Phir poore chaar saal baad, 17 December ko Rehmaniya mein jab humara pehla exam tha, maine aapko dobara dekha. Aapko dekhte hi meri saans jaise ruk si gayi! Maine ek pal mein pehchan liya ki yeh wahi ladki hai jo Kamhariya ke Urs mein mili thi, jiska chehra main kabhi bhula nahi paya tha. Us din exam mein main kya likh kar aaya tha, mujhe khud nahi pata. Mujhe bas itna yaad hai ki Hindi ka paper tha, aap right side baithi thi aur main left side, aur main poore waqt bas chupke se aapko dekhta raha.
+
+Jab exam khatam hua, toh main neeche khada aapka intezaar karta raha ki aap aayengi toh dekhunga aap kahan ja rahi hain. Us din aapko dekh kar mujhe samajh aa gaya tha ki maine chahte na chahte aapse aisi mohabbat kar li hai jiski mujhe khud khabar nahi thi.`,
+
+        `Main aapko is baar khona nahi chahta tha, isliye main aapke peeche-peeche Uprasu tak gaya. Agle paper mein Malikua tak gaya. Ladkon se pata kiya ki aapki coaching kahan hai, kis time hai, Faheem sir, saleem sir, Tufail sir, Naaz maam sab kuch.
+
+Jab pata chala ki aap Naaz Ma'am ke yahan padhti hain. Ek din maine coaching ke baahar baith kar dekha ki aap kis batch mein aati hain. Jab aap subah 10 bje dikhayi deen, toh maine jaise-taise bahane bana kar Naaz Ma'am se subah ki coaching lagwa li. Maine ma'am se kaha ki main shaam ko nahi aa sakta, jabki sach toh yeh tha ki main chemistry already Mujeeb Sir se padh raha tha. Ab mere haath-pair kaanp rahe the ki kal se aapke sath baithna hai, samajh nahi aa raha hai kya karu.`,
+
+        `Himmat karke coaching gaya aur bilkul aapke peeche  baithta tha. Wahan maine dekha ki humari Modern ki classmate ladkiyan bhi padhti hain. Maine socha shayad in se kahun toh kuch baat ban jaye, kyunki direct aapse baat karne ki meri himmat hi nahi thi. Mujhe darr tha ki agar maine seedhe poocha toh aap mana kar dengi. Maine ladkiyon se kaha ki meri baat karwao aur sab se pehle is ladki ka naam pata karo. Mahina hone ko aaya tha, par poori duniya mein kisi ko is ladki ka naam hi nahi pata tha, na woh kisi se bolti thi.
+
+Kayi din guzar gaye, na aapki aawaz suni na naam pata chala. Main bas aapko aate-jaate dekhta rehta. Is chakkar mein mujhe baqi sab ke naam pata chal gaye—ki Huma Appi yeh hain, Sakshi yeh hain... par aapka naam raaz hi raha.`,
+
+        `Phir ek din class mein ma'am ne achanak naam liya, "Farheen, samajh mein aa raha hai?" Tab mujhe pehli baar aapka naam pata chala!
+Magar aawaz maine tab bhi nahi suni thi. Mujhe toh lagne laga tha ki kahin aap gongi toh nahi hain ki itne dinon mein ek lafz nahi bolin. Phir koi daswein din ma'am ne kaha, "Farheen, kuch bologi ya bas sunti rahogi? Achha, is formula ka naam batao." Tab maine zindagi mein pehli baar aapki aawaz suni thi, jab aapne kaha, "Ma'am, nahi pata 🥲."
+
+Mujhe aapki har coaching aur har timing ka pata chal chuka hai, lekin aapne kabhi nazar utha kar nahi dekha. Main jaanta tha aap kabhi nahi dekhengi. Pata nahi kyun, par aapko dekh kar mujhe hamesha aisa lagta tha jaise main aapko hmesha se jaanta hoon, aapki har baat se waqif hoon. Mere liye kuch bhi naya nahi tha.`,
+
+        `Us waqt Allah ne mujhe himmat nahi di, balki sabr diya. Maine boht koshish ki kisi tarah baat ho jaye, par na ho saki, yahan tak ki aapko khabar tak na hui ki koi 'Aahil' bhi is duniya mein maujood hai.
+
+Lekin ek baat main zaroor kahunga ki aapse milne ke baad, main pehle jaisa nahi raha. Main baqi ladkon jaisa nahi tha jo har kisi se dil laga lete hain. Mere iraade aapko lekar hamesha bilkul paak aur nek the. Jab upar wale ne humein dobara milwaya, toh mujhe laga ki khuda milwata hi unse hai jinse kismat bandhi hoti hai. Par jab ummeed tooti, toh dil mein bade sawaal aaye... kya upar wale ko sirf main hi bura dikhta hoon? Mere sath hi aisa kyun hota hai? Main toh kisi ka bura nahi chahta, phir bhi jis ek shakhs ko maine sbse zyada chaha, woh mera na ho saka. Main boht roya, boht duayein kien, minnatein kien, par kuch na badla.`,
+
+        `Mera roll number 1 tha, toh galti se Rehmaniya mein practicals ke dauran main ladkiyon wale section mein chala gaya. Main akela ladka tha jo Rehmaniya mein practical de raha tha. Gandhi College se gaadi utha kar nikla aur raste mein sirf ek hi baat soch raha tha—ki shayad upar wale ne yeh galti mere liye hi karwayi hai, taaki main FARHEEN ko aakhiri baar dekh sakoon. Kyunki us din ke baad shayad main aapko kabhi na dekh pata.
+
+Jaise hi pahuncha, maine sab se pehle aapko dhoondha. Aap sab se peeche wali bench par baithi thi. Us din jo maine mehsoos kiya, zindagi mein kabhi aisi ajeeb feeling mehsoos nahi ki thi. Aap meri aankhon ke saamne thi, par main kuch keh nahi paa raha tha. Main jaanta tha agar aaj na kaha toh shayad zindagi bhar aapka chehra nahi dekh paunga. Main bas aapko dekh raha tha aur meri aankhon mein aansu the. Bilkul shiddat se, maine mann bhar ke aapko dekha... jitna main dekh sakta tha.`,
+
+        `Jab main aakhiri practical de kar baahar aaya, toh ladkiyon ki line lagi hui thi. Maine aakhiri baar poori mohabbat se aapki taraf dekha aur dil hi dil mein alwida kaha. Kyunki main jaanta tha main aapko zindagi bhar nahi bhula sakta, bhale hi mera naseeb aisa ho ki aapko mera naam tak na pata ho... ya yeh na pata ho ki koi shakhs sirf aapke is duniya mein hone se kitni mohabbat karta hai.`
+      ]
     },
   ];
 
@@ -337,9 +429,6 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
                     <h4 className="font-serif text-white group-hover:text-amber-300 transition-colors duration-300 text-base">
                       {letter.title}
                     </h4>
-                    <span className="text-[10px] text-text-secondary font-sans uppercase tracking-widest">
-                      {letter.date}
-                    </span>
                   </div>
 
                   <span className="text-[9px] font-sans uppercase tracking-widest text-amber-300/80 group-hover:text-amber-200 flex items-center gap-1">
@@ -425,11 +514,11 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
               transition={{ duration: 0.4 }}
-              className="relative max-w-2xl w-full p-8 md:p-12 rounded-3xl border border-[#D9C4A9]/30 bg-[#161517] bg-gradient-to-tr from-[#161517] via-[#1E1C1F] to-[#161517] shadow-[0_30px_70px_rgba(0,0,0,0.95)] flex flex-col gap-6"
+              className="relative max-w-2xl w-full p-6 md:p-10 rounded-3xl border border-[#D9C4A9]/30 bg-[#161517] bg-gradient-to-tr from-[#161517] via-[#1E1C1F] to-[#161517] shadow-[0_30px_70px_rgba(0,0,0,0.95)] flex flex-col gap-5"
             >
               <button
                 onClick={() => setActiveLetter(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-white/5 border border-white/10 text-text-secondary hover:text-white transition-all duration-300"
+                className="absolute top-4 right-4 p-3 rounded-full bg-white/5 border border-[#D9C4A9]/20 text-text-secondary hover:text-white transition-all duration-300 z-50 pointer-events-auto active:scale-90 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -440,19 +529,81 @@ export default function GiftBox({ collectedKeysCount, onOpenSuccess }: GiftBoxPr
                 <span className="font-serif italic text-sm text-pink-glow">
                   {activeLetter.title}
                 </span>
-                <span className="font-sans text-[10px] tracking-widest text-[#D9C4A9] uppercase font-bold">
-                  {activeLetter.date}
-                </span>
               </div>
 
               {/* Letter content in Typewriter typewriter font layout */}
-              <div className="font-serif italic text-base md:text-lg text-white/90 leading-relaxed whitespace-pre-wrap text-left z-10 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
-                {activeLetter.content}
+              <div className="font-serif italic text-xs md:text-sm text-white/95 leading-relaxed whitespace-pre-wrap text-left z-10">
+                {activeLetter.pages ? (
+                  <>
+                    {activeLetter.pages[currentPage]}
+                    {activeLetter.id === "letter-1" && currentPage === 2 && (
+                      <div className="mt-4 flex flex-col gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                          src="/images/sketch.png" 
+                          alt="Sketch illustration" 
+                          className="max-h-[160px] object-contain rounded-xl border border-white/10 shadow-lg mx-auto"
+                        />
+                        <div className="text-glow font-bold text-sm md:text-base text-center text-white/95">
+                          I loved you, I love you, I will love you!
+                        </div>
+                      </div>
+                    )}
+                    {activeLetter.id === "letter-2" && currentPage === 2 && (
+                      <div className="mt-4 flex flex-col gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                          src="/images/roses.png" 
+                          alt="Roses painting" 
+                          className="max-h-[160px] object-contain rounded-xl border border-white/10 shadow-lg mx-auto"
+                        />
+                        <div className="text-glow font-bold text-sm md:text-base text-center text-white/95">
+                          In every verse, I Always choose you!
+                        </div>
+                      </div>
+                    )}
+                    {activeLetter.id === "letter-3" && currentPage === 8 && (
+                      <div className="mt-4 flex flex-col gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                          src="/images/angel.png" 
+                          alt="Angel illustration" 
+                          className="max-h-[160px] object-contain rounded-xl border border-white/10 shadow-lg mx-auto"
+                        />
+                        <div className="text-glow font-bold text-sm md:text-base text-center text-white/95">
+                          في الدنيا والآخرة
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  activeLetter.content
+                )}
               </div>
 
-              <div className="flex justify-end mt-4 items-center border-t border-[#D9C4A9]/10 pt-4 z-10">
+              <div className="flex justify-between mt-4 items-center border-t border-[#D9C4A9]/10 pt-4 z-10">
+                <div>
+                  {activeLetter.pages && activeLetter.pages.length > 1 && (
+                    <div className="flex gap-4">
+                      <button
+                        onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
+                        disabled={currentPage === 0}
+                        className="text-xs uppercase tracking-wider text-text-secondary hover:text-white transition-colors duration-300 disabled:opacity-30 disabled:pointer-events-none"
+                      >
+                        Prev Page
+                      </button>
+                      <button
+                        onClick={() => setCurrentPage(prev => Math.min(activeLetter.pages!.length - 1, prev + 1))}
+                        disabled={currentPage === activeLetter.pages.length - 1}
+                        className="text-xs uppercase tracking-wider text-pink-glow hover:text-white transition-colors duration-300 disabled:opacity-30 disabled:pointer-events-none"
+                      >
+                        Next Page
+                      </button>
+                    </div>
+                  )}
+                </div>
                 <span className="font-serif text-xs text-text-secondary italic">
-                  Yours, always.
+                  Page {currentPage + 1} of {activeLetter.pages ? activeLetter.pages.length : 1}
                 </span>
               </div>
             </motion.div>
