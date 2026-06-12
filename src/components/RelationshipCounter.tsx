@@ -118,7 +118,7 @@ export default function RelationshipCounter({ showKey = false, onCollectKey = ()
   return (
     <section ref={sectionRef} className="w-full py-32 bg-[#0A0A0C] border-t border-glass relative overflow-hidden">
       {/* Background glowing effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-accent-glow/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[150px] md:w-[600px] md:h-[300px] bg-accent-glow/5 rounded-full blur-[55px] md:blur-[130px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         

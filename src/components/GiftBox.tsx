@@ -267,8 +267,8 @@ Jaise hi pahuncha, maine sab se pehle aapko dhoondha. Aap sab se peeche wali ben
   return (
     <section id="gift-box" className="w-full py-28 bg-[#030304] border-t border-glass relative overflow-hidden flex flex-col items-center justify-center">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/5 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-pink-glow/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[200px] md:w-[600px] md:h-[400px] bg-amber-500/5 rounded-full blur-[50px] md:blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-40 h-40 md:w-80 md:h-80 bg-pink-glow/5 rounded-full blur-[45px] md:blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center gap-8 select-none w-full">
         {/* Header */}

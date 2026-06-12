@@ -66,11 +66,11 @@ export default function MemorySequence({ introStage, setIntroStage, showKey = fa
         {/* Soft background glows moving on scroll */}
         <motion.div
           style={{ opacity: glowOpacity1 }}
-          className="absolute -top-1/4 -left-1/4 w-[80vw] h-[80vh] bg-accent-glow rounded-full blur-[150px] pointer-events-none"
+          className="absolute -top-1/4 -left-1/4 w-[40vw] h-[40vh] md:w-[80vw] md:h-[80vh] bg-accent-glow rounded-full blur-[60px] md:blur-[150px] pointer-events-none"
         />
         <motion.div
           style={{ opacity: glowOpacity2 }}
-          className="absolute -bottom-1/4 -right-1/4 w-[80vw] h-[80vh] bg-pink-glow rounded-full blur-[150px] pointer-events-none"
+          className="absolute -bottom-1/4 -right-1/4 w-[40vw] h-[40vh] md:w-[80vw] md:h-[80vh] bg-pink-glow rounded-full blur-[60px] md:blur-[150px] pointer-events-none"
         />
 
         {/* Floating Photos Scene */}

@@ -278,7 +278,7 @@ export default function QuoteOverlay({
   const spawnExplosionBurst = () => {
     const plist = particlesRef.current;
     const isMobile = window.innerWidth < 768;
-    const count = isMobile ? 70 : 280;
+    const count = isMobile ? 35 : 180;
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
       const speed = Math.random() * 11 + 6.5; // High speed outward
@@ -585,7 +585,7 @@ export default function QuoteOverlay({
     const plist = particlesRef.current;
 
     // 1. Spawn falling cream paper bits (existing)
-    const fiberCount = isMobile ? 3 : 9;
+    const fiberCount = isMobile ? 2 : 6;
     for (let i = 0; i < fiberCount; i++) {
       plist.push({
         id: Math.random(),
@@ -604,7 +604,7 @@ export default function QuoteOverlay({
     }
 
     // 2. Spawn Light Leak Particles (high velocity golden/white glowing particles)
-    const leakCount = isMobile ? 6 : 22;
+    const leakCount = isMobile ? 3 : 12;
     for (let i = 0; i < leakCount; i++) {
       const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.2; // spraying upward/outward
       const speed = Math.random() * 5.0 + 2.5;
@@ -623,7 +623,7 @@ export default function QuoteOverlay({
     }
 
     // 3. Small star sparkle trails
-    const trailCount = isMobile ? 3 : 8;
+    const trailCount = isMobile ? 2 : 5;
     for (let i = 0; i < trailCount; i++) {
       plist.push({
         id: Math.random(),
@@ -736,8 +736,8 @@ export default function QuoteOverlay({
           className="text-center max-w-3xl flex flex-col items-center gap-5 relative z-20"
         >
           {/* Living atmospheric nebula clouds */}
-          <div className="absolute w-[60vw] h-[40vh] rounded-full bg-pink-glow/5 blur-[120px] pointer-events-none -top-[20%] -left-[10%] -z-10 animate-pulse-slow" />
-          <div className="absolute w-[50vw] h-[30vh] rounded-full bg-accent-glow/5 blur-[110px] pointer-events-none -bottom-[20%] -right-[10%] -z-10 animate-pulse-slow" />
+          <div className="absolute w-[30vw] h-[20vh] md:w-[60vw] md:h-[40vh] rounded-full bg-pink-glow/5 blur-[50px] md:blur-[120px] pointer-events-none -top-[20%] -left-[10%] -z-10 animate-pulse-slow" />
+          <div className="absolute w-[25vw] h-[15vh] md:w-[50vw] md:h-[30vh] rounded-full bg-accent-glow/5 blur-[45px] md:blur-[110px] pointer-events-none -bottom-[20%] -right-[10%] -z-10 animate-pulse-slow" />
 
           {/* Happy Birthday typography: Materializing letters */}
         <motion.h1 

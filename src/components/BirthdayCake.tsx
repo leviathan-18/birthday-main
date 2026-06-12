@@ -538,8 +538,8 @@ export default function BirthdayCake({ showKey = false, onCollectKey = () => {} 
       ref={sectionRef}
       className="w-full min-h-screen py-24 bg-[#030304] border-t border-glass relative flex flex-col items-center justify-center overflow-hidden"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-pink-glow/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-10 right-10 w-96 h-96 bg-accent-glow/5 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[800px] md:h-[500px] bg-pink-glow/5 rounded-full blur-[50px] md:blur-[140px] pointer-events-none" />
+      <div className="absolute top-10 right-10 w-44 h-44 md:w-96 md:h-96 bg-accent-glow/5 rounded-full blur-[40px] md:blur-[120px] pointer-events-none animate-pulse-slow" />
 
       <div className="max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center gap-8 select-none">
         

@@ -171,8 +171,8 @@ export default function MemoryGrid({ showKey = false, onCollectKey = () => {} }:
   return (
     <section id="journey" className="w-full py-32 bg-[#0A0A0C] border-t border-glass relative overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent-glow/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-glow/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-accent-glow/5 rounded-full blur-[50px] md:blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-pink-glow/5 rounded-full blur-[50px] md:blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Section Header */}
@@ -269,7 +269,7 @@ export default function MemoryGrid({ showKey = false, onCollectKey = () => {} }:
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-xl px-4"
           >
             {/* Ambient surrounding glow in overlay */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-pink-glow/5 rounded-full blur-[150px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vh] md:w-[80vw] md:h-[80vh] bg-pink-glow/5 rounded-full blur-[70px] md:blur-[150px] pointer-events-none" />
 
             {/* Back to Grid / Exit Trigger overlay */}
             <div className="absolute inset-0 cursor-pointer" onClick={handleClose} />

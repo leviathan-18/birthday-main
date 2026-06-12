@@ -180,7 +180,7 @@ export default function EndingScene() {
 
     let animationFrameId: number;
     const isMobile = window.innerWidth < 768;
-    const maxParticles = isMobile ? 800 : 2000; // compose heart of 2000 glowing particles on desktop, 800 on mobile
+    const maxParticles = isMobile ? 300 : 1500; // compose heart of 1500 glowing particles on desktop, 300 on mobile
     const particles: Particle[] = [];
 
     const colors = [
@@ -246,7 +246,7 @@ export default function EndingScene() {
     };
 
     // Background cosmic space dust (reduced on mobile)
-    const spaceStarsCount = isMobile ? 70 : 200;
+    const spaceStarsCount = isMobile ? 35 : 120;
     const spaceStars: Array<{ x: number; y: number; size: number; alpha: number; twinkle: number }> = [];
     for (let i = 0; i < spaceStarsCount; i++) {
       spaceStars.push({
@@ -859,7 +859,7 @@ export default function EndingScene() {
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block -z-10" />
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vh] bg-accent-glow/5 rounded-full blur-[170px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vh] md:w-[70vw] md:h-[70vh] bg-accent-glow/5 rounded-full blur-[70px] md:blur-[170px] pointer-events-none animate-pulse-slow" />
 
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_120px_rgba(0,0,0,0.98)]" />
 

@@ -277,7 +277,7 @@ export default function FavoriteThings({ showKey = false, onCollectKey = () => {
   return (
     <section id="moments" ref={sectionRef} className="w-full py-32 bg-[#050505] border-t border-glass relative overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-pink-glow/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[700px] md:h-[700px] bg-pink-glow/5 rounded-full blur-[60px] md:blur-[150px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10 select-none">
         
@@ -304,7 +304,7 @@ export default function FavoriteThings({ showKey = false, onCollectKey = () => {
           {/* Vinyl Control Station (7 columns) */}
           <div ref={vinylCardRef} className="lg:col-span-7 p-8 md:p-10 rounded-3xl bg-glass border border-glass flex flex-col justify-between relative overflow-hidden opacity-0">
             {/* Subtle backdrop glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-accent-glow/5 blur-[80px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-accent-glow/5 blur-[40px] md:blur-[80px] pointer-events-none" />
             
             <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
               

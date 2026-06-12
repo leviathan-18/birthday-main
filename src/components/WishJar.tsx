@@ -223,8 +223,8 @@ export default function WishJar({ showKey = false, onCollectKey = () => {} }: Wi
       className="w-full min-h-screen py-24 bg-[#050507] border-t border-glass relative flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent-glow/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-pink-glow/5 rounded-full blur-[110px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[250px] md:w-[700px] md:h-[500px] bg-accent-glow/5 rounded-full blur-[60px] md:blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-48 h-48 md:w-96 md:h-96 bg-pink-glow/5 rounded-full blur-[50px] md:blur-[110px] pointer-events-none animate-pulse-slow" />
 
       <div className="max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center gap-10 select-none">
         

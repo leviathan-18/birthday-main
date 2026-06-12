@@ -15,7 +15,7 @@ import LazyMount from "@/components/LazyMount";
 
 // TODO: Change to new Date("2026-06-14T00:00:00") 
 // before final launch (14th June, 12 AM)
-const TARGET_DATE = new Date("2026-06-12T16:45:00");
+const TARGET_DATE = new Date("2026-06-14T00:00:00");
 
 // Dynamically import heavy and below-the-fold components
 const MemoryGrid = dynamic(() => import("@/components/MemoryGrid"), { ssr: false });

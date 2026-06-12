@@ -195,7 +195,7 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
     });
 
     // Background cosmic dust stars (reduced on mobile)
-    const bgStarsCount = isMobile ? 60 : 200;
+    const bgStarsCount = isMobile ? 30 : 150;
     const bgStars: BackgroundStar[] = [];
     for (let i = 0; i < bgStarsCount; i++) {
       bgStars.push({
@@ -429,7 +429,7 @@ export default function ConstellationReveal({ showKey = false, onCollectKey = ()
         
         {/* Soft Background nebulas */}
         {hasScrolledIn && (
-          <div className="absolute w-[80vw] h-[80vh] rounded-full bg-accent-glow/5 blur-[160px] pointer-events-none z-0 transition-opacity duration-[2s] opacity-60 animate-pulse-slow" style={{ top: "10%", left: "10%" }} />
+          <div className="absolute w-[40vw] h-[40vh] md:w-[80vw] md:h-[80vh] rounded-full bg-accent-glow/5 blur-[70px] md:blur-[160px] pointer-events-none z-0 transition-opacity duration-[2s] opacity-60 animate-pulse-slow" style={{ top: "10%", left: "10%" }} />
         )}
 
         {/* Final revealed quotes below the constellation */}

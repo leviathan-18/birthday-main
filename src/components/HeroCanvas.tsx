@@ -170,7 +170,7 @@ export default function HeroCanvas({ introStage }: HeroCanvasProps) {
 
     // 2. Initialize Living Star Field (Layer 1: bg, depth 1: mid, depth 2: fg)
     const stars: Star[] = [];
-    const starCount = isMobile ? 120 : 420; // Expanded to 420 stars for high-density stars, reduced on mobile
+    const starCount = isMobile ? 60 : 300; // Expanded to 300 stars for high-density stars, reduced on mobile
     for (let i = 0; i < starCount; i++) {
       const depth = Math.floor(Math.random() * 3); // 0 (far/bg), 1 (mid), 2 (near/fg)
       let size = 0;
@@ -204,7 +204,7 @@ export default function HeroCanvas({ introStage }: HeroCanvasProps) {
 
     // 3. Initialize Floating Light Orbs (Layer 3/Foreground)
     const lightOrbs: LightOrb[] = [];
-    const orbCount = isMobile ? 8 : 22; // 22 on desktop, reduced to 8 on mobile to save GPU cycles
+    const orbCount = isMobile ? 4 : 14; // 14 on desktop, reduced to 4 on mobile to save GPU cycles
     const orbColors = [
       "rgba(139, 92, 246, ",  // violet
       "rgba(236, 72, 153, ",  // pink
@@ -228,7 +228,7 @@ export default function HeroCanvas({ introStage }: HeroCanvasProps) {
 
     // 4. Initialize Cosmic Dust Field (Layer 3)
     const cosmicDust: CosmicDust[] = [];
-    const dustCount = isMobile ? 30 : 110; // Expanded to 110 stardust on desktop, reduced to 30 on mobile
+    const dustCount = isMobile ? 15 : 60; // Expanded to 60 stardust on desktop, reduced to 15 on mobile
     for (let i = 0; i < dustCount; i++) {
       const dustAngle = Math.random() * Math.PI * 2;
       cosmicDust.push({
@@ -245,7 +245,7 @@ export default function HeroCanvas({ introStage }: HeroCanvasProps) {
 
     // 5. Initialize Diagonal Light Streaks (Layer 5)
     const lightStreaks: LightStreak[] = [];
-    const streakCount = isMobile ? 1 : 4; // 4 on desktop, 1 on mobile
+    const streakCount = isMobile ? 1 : 3; // 3 on desktop, 1 on mobile
     for (let i = 0; i < streakCount; i++) {
       lightStreaks.push({
         x: Math.random() * window.innerWidth,
@@ -515,7 +515,7 @@ export default function HeroCanvas({ introStage }: HeroCanvasProps) {
         if (!introExplosionActive) {
           introExplosionActive = true;
           // Spawn colorful stardust explosion particles from center (fewer on mobile)
-          const explodeCount = isMobile ? 80 : 240;
+          const explodeCount = isMobile ? 40 : 160;
           for (let i = 0; i < explodeCount; i++) {
             const angle = Math.random() * Math.PI * 2;
             const speed = Math.random() * 14 + 7.5;

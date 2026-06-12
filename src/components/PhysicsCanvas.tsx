@@ -156,10 +156,10 @@ export default function PhysicsCanvas() {
     };
 
     // Initial Spawning spread across viewport height
-    const totalBalloons = isMobile ? 3 : 8;
-    const totalConfetti = isMobile ? 8 : 22;
-    const totalStars = isMobile ? 4 : 12;
-    const totalIcons = isMobile ? 4 : 10;
+    const totalBalloons = isMobile ? 2 : 6;
+    const totalConfetti = isMobile ? 5 : 15;
+    const totalStars = isMobile ? 3 : 8;
+    const totalIcons = isMobile ? 2 : 6;
 
     for (let i = 0; i < totalBalloons; i++) spawnParticle("balloon", Math.random() * canvas.height);
     for (let i = 0; i < totalConfetti; i++) spawnParticle("confetti", Math.random() * canvas.height);

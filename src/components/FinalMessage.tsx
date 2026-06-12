@@ -54,7 +54,8 @@ export default function FinalMessage() {
     >
       {/* Background large heart-like radial glow */}
       <div className="absolute inset-0 bg-radial-glow pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vh] bg-pink-glow/5 rounded-full blur-[180px] pointer-events-none" />
+      {/* Heavy romantic ambient backing nebula */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vh] md:w-[70vw] md:h-[70vh] bg-pink-glow/5 rounded-full blur-[70px] md:blur-[180px] pointer-events-none" />
 
       {/* Centered content block */}
       <div className="relative w-full max-w-3xl mx-auto px-6 select-none flex flex-col items-center justify-center text-center">

@@ -56,8 +56,8 @@ export default function CountdownScreen({ targetDate, onComplete }: CountdownScr
       className="fixed inset-0 w-full h-full bg-[#050505] z-[9999] flex flex-col items-center justify-center select-none overflow-hidden"
     >
       {/* Background ambient glowing circles */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-pink-glow/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-pink-glow/5 rounded-full blur-[50px] md:blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-amber-500/5 rounded-full blur-[50px] md:blur-[140px] pointer-events-none" />
 
       {/* Decorative stars / dust in the background */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
