@@ -13,6 +13,10 @@ import IntroLoader from "@/components/IntroLoader";
 import dynamic from "next/dynamic";
 import LazyMount from "@/components/LazyMount";
 
+// TODO: Change to new Date("2026-06-14T00:00:00") 
+// before final launch (14th June, 12 AM)
+const TARGET_DATE = new Date("2026-06-12T16:45:00");
+
 // Dynamically import heavy and below-the-fold components
 const MemoryGrid = dynamic(() => import("@/components/MemoryGrid"), { ssr: false });
 const FavoriteThings = dynamic(() => import("@/components/FavoriteThings"), { ssr: false });
@@ -26,12 +30,21 @@ const EndingScene = dynamic(() => import("@/components/EndingScene"), { ssr: fal
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
+  const [showCountdown, setShowCountdown] = useState(false);
   const [introStage, setIntroStage] = useState<'intro-silence' | 'intro-shooting' | 'intro-vortex' | 'intro-explode' | 'char-enter' | 'done'>('intro-silence');
   
   // Advanced Story Experience Upgrade States
   const [collectedKeys, setCollectedKeys] = useState<string[]>([]);
   const [flyingKeys, setFlyingKeys] = useState<Array<{ id: string; startX: number; startY: number }>>([]);
   const [isLastSectionVisible, setIsLastSectionVisible] = useState(false);
+
+  // Check target date on client mount to control countdown block
+  useEffect(() => {
+    const now = new Date();
+    if (now < TARGET_DATE) {
+      setShowCountdown(true);
+    }
+  }, []);
 
   // Intersection Observer to hide Key tracker in the footer section
   useEffect(() => {
@@ -115,7 +128,7 @@ export default function Home() {
   return (
     <SoundtrackProvider>
       {showLoader ? (
-        <IntroLoader onEnter={() => setShowLoader(false)} />
+        <IntroLoader isCountdownActive={showCountdown} targetDate={TARGET_DATE} onEnter={() => setShowLoader(false)} />
       ) : (
         <main className="relative min-h-screen bg-luxury-dark selection:bg-accent-glow/30 selection:text-white">
           {/* Immersive weather backgrounds */}

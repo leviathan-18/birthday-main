@@ -7,13 +7,18 @@ import { Film, Play } from "lucide-react";
 import { useSoundtrack } from "@/context/SoundtrackContext";
 
 
+import CountdownScreen from "./CountdownScreen";
+
 interface IntroLoaderProps {
   onEnter: () => void;
+  isCountdownActive?: boolean;
+  targetDate: Date;
 }
 
-export default function IntroLoader({ onEnter }: IntroLoaderProps) {
+export default function IntroLoader({ onEnter, isCountdownActive = false, targetDate }: IntroLoaderProps) {
   const [progress, setProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [countdownFinished, setCountdownFinished] = useState(false);
   const { setIsPlaying } = useSoundtrack();
 
   // Simulated Loading timeline
@@ -131,6 +136,12 @@ export default function IntroLoader({ onEnter }: IntroLoaderProps) {
                 {Math.round(progress)}% Complete
               </span>
             </motion.div>
+          ) : isCountdownActive && !countdownFinished ? (
+            <CountdownScreen
+              key="countdown"
+              targetDate={targetDate}
+              onComplete={() => setCountdownFinished(true)}
+            />
           ) : (
             <motion.div
               key="enter"
